@@ -9,7 +9,6 @@ def isSafe(levels):
 
 def isAnySubsetSafe(levels):
     subsets = [levels[:i] + levels[i+1:] for i in range(len(levels))]
-
     return any(isSafe(subset) for subset in subsets)
 
 
