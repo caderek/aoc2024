@@ -4,11 +4,11 @@ with open('src/day04/input.txt', 'r') as file:
 def solve(data, slices, variants):
     count = 0
 
-    for x in range(len(data[0])):
-        for y in range(len(data)):
+    for y in range(len(data)):
+        for x in range(len(data[0])):
             for slice in slices:
                 try:
-                    word =  ''.join([data[y + dY][x + dX] for dX, dY in slice])
+                    word =  ''.join([data[y + dy][x + dx] for dx, dy in slice])
 
                     if word in variants:
                         count += 1
@@ -25,11 +25,11 @@ slices1 = [
 ]
 
 slices2 = [
-    ((0, 0), (1, 1), (2, 2), (0, 2), (1, 1), (2, 0)),
+    ((0, 0), (1, 1), (2, 2), (0, 2), (2, 0)),
 ]
 
 part1 = solve(input, slices1, {'XMAS', 'SAMX'})
-part2 = solve(input, slices2, {'MASMAS', 'SAMSAM', 'MASSAM', 'SAMMAS'})
+part2 = solve(input, slices2, {'MASMS', 'SAMSM', 'MASSM', 'SAMMS'})
 
 print(part1)
 print(part2)
