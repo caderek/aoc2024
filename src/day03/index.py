@@ -1,10 +1,10 @@
 import re
 
 with open('src/day03/input.txt', 'r') as file:
-    mem = file.read().replace('\n', ' ')
+    mem = file.read()
 
 to_match = r"mul\(\d{1,3},\d{1,3}\)"
-to_skip = r"don't\(\)(.*?)(do\(\)|$)"
+to_skip = r"don't\(\)[\s\S]*?(do\(\)|$)"
 
 def calc(mem):
     return sum(
