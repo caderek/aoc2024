@@ -1,11 +1,10 @@
-import re
 from functools import cmp_to_key
 
-with open('src/day05/input.txt', 'r') as file:
+with open('input.txt') as file:
     rules_raw, manuals_raw = file.read().split('\n\n')
     rules = set(rules_raw.splitlines())
     manuals = [
-        [int(x) for x in re.findall("\d+", line)]
+        [int(x) for x in line.split(',')]
         for line in manuals_raw.splitlines()
     ]
 
