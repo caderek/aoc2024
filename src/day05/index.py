@@ -9,7 +9,6 @@ with open('src/day05/input.txt', 'r') as file:
         for line in manuals_raw.splitlines()
     ]
 
-
 def compare(a, b):
     return -1 if f"{a}|{b}" in rules else 0
 
