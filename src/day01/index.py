@@ -3,7 +3,7 @@ import re
 a = []
 b = []
 
-with open('src/day01/input.txt', 'r') as file:
+with open('input.txt') as file:
     items = [re.split(r'\s+', line.strip()) for line in file]
 
     for item in items:

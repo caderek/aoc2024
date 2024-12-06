@@ -1,6 +1,6 @@
 import itertools
 
-with open('src/day02/input.txt', 'r') as file:
+with open('input.txt') as file:
     items = [[int(x) for x in line.split()] for line in file]
 
 def isSafe(levels):

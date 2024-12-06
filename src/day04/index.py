@@ -1,4 +1,4 @@
-with open('src/day04/input.txt', 'r') as file:
+with open('input.txt') as file:
     input = [line.strip() for line in file]
 
 def solve(data, slices, variants):

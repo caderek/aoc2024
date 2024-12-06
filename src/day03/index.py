@@ -1,6 +1,6 @@
 import re
 
-with open('src/day03/input.txt', 'r') as file:
+with open('input.txt') as file:
     mem = file.read()
 
 to_match = r"mul\(\d{1,3},\d{1,3}\)"
