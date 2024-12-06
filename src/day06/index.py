@@ -42,7 +42,7 @@ def does_loop(grid):
         next = (prev[0] + dy, prev[1] + dx)
 
         if next[0] < 0 or next[1] < 0 or next[0] >= h or next[1] >= w:
-            break
+            return False
 
         val = grid[next[0]][next[1]]
 
@@ -54,20 +54,16 @@ def does_loop(grid):
             steps.add(prev + next)
             prev = next
 
-    return False
-
-
 def part2(input):
     loops = 0
 
-    for y in range(len(input)):
-        for x in range(len(input[0])):
+    for y in range(h):
+        for x in range(w):
             val = input[y][x]
             
             if val != '.':
                 continue
 
-            changed = (y, x, val)
             input[y][x] = '#'
 
             if does_loop(input):
