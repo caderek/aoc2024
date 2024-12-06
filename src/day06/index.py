@@ -30,7 +30,7 @@ def solve1(grid):
             visited.add(next)
             prev = next
 
-    return visited
+    return len(visited), visited
 
 def does_loop(grid):
     steps = set()
@@ -73,8 +73,7 @@ def solve2(input, visited):
     return loops
 
 
-visited = solve1(input)
-part1 = len(visited)
+part1, visited = solve1(input)
 part2 = solve2(input, visited)
 
 print(part1)
