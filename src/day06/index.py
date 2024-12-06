@@ -10,7 +10,7 @@ start = next(
 
 dirs = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 
-def part1(grid):
+def solve1(grid):
     visited = {start}
     dir = 0
     prev = start
@@ -30,7 +30,7 @@ def part1(grid):
             visited.add(next)
             prev = next
 
-    return len(visited)
+    return visited
 
 def does_loop(grid):
     steps = set()
@@ -54,26 +54,29 @@ def does_loop(grid):
             steps.add(prev + next)
             prev = next
 
-def part2(input):
+def solve2(input, visited):
     loops = 0
 
-    for y in range(h):
-        for x in range(w):
-            val = input[y][x]
-            
-            if val != '.':
-                continue
+    for y, x in visited:
+        val = input[y][x]
+        
+        if val != '.':
+            continue
 
-            input[y][x] = '#'
+        input[y][x] = '#'
 
-            if does_loop(input):
-                loops += 1
+        if does_loop(input):
+            loops += 1
 
-            input[y][x] = val
+        input[y][x] = val
 
     return loops
 
 
-print(part1(input))
-print(part2(input))
+visited = solve1(input)
+part1 = len(visited)
+part2 = solve2(input, visited)
+
+print(part1)
+print(part2)
 
