@@ -21,6 +21,8 @@ def solve(symbols):
         for ops in product(symbols, repeat=len(rest)):
             right = first
             for op, num in zip(ops, rest):
+                if right > left:
+                    continue
                 right = calc[op](right, num)
             if left == right:
                 sum += left
