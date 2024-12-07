@@ -1,7 +1,7 @@
 import re
 from itertools import product
 
-with open('input.example.txt') as file:
+with open('input.txt') as file:
     input = [
         [int(x) for x in re.findall("\d+", line)]
         for line in  file.read().strip().splitlines()
