@@ -18,12 +18,14 @@ def solve(symbols):
     sum = 0
 
     for left, *nums in input:
-        for ops in product(symbols, repeat=len(nums) - 1):
+        l = len(nums) - 1
+        indicies = range(l)
+        for ops in product(symbols, repeat=l):
             right = nums[0]
-            for i in range(1, len(nums)):
+            for i in indicies:
                 if right > left:
                     continue
-                right = calc[ops[i - 1]](right, nums[i])
+                right = calc[ops[i]](right, nums[i + 1])
             if left == right:
                 sum += left
                 break
