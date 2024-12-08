@@ -4,8 +4,7 @@ from itertools import combinations, product
 with open('input.txt') as file:
     input = [[*line] for line in file.read().strip().splitlines()]
 
-size = len(input)
-indicies = set(product(range(size), repeat=2))
+indicies = set(product(range(len(input)), repeat=2))
 antennas = {}
 
 for y, x in indicies:
@@ -13,16 +12,19 @@ for y, x in indicies:
     if val != '.':
         antennas.setdefault(val, []).append((y, x))
 
+def get_point():
+    return
+
 def solve1():
     antinodes = set()
 
     for coords in antennas.values():
-        for a, b in combinations(coords, 2):
-            distY = a[0] - b[0]
-            distX = a[1] - b[1]
+        for [ay, ax], [by, bx] in combinations(coords, 2):
+            dy = ay - by
+            dx = ax - bx
 
-            aa = (a[0] + distY, a[1] + distX)
-            bb = (b[0] - distY, b[1] - distX)
+            aa = (ay + dy, ax + dx)
+            bb = (by - dy, bx - dx)
 
             if aa in indicies:
                 antinodes.add(aa)
@@ -35,16 +37,16 @@ def solve2():
     antinodes = set()
 
     for coords in antennas.values():
-        for a, b in combinations(coords, 2):
-            distY = a[0] - b[0]
-            distX = a[1] - b[1]
-            gcd = math.gcd(distX, distY)
-            distY = distY // gcd
-            distX = distX // gcd
+        for [ay, ax], [by, bx] in combinations(coords, 2):
+            dy = ay - by
+            dx = ax - bx
+            gcd = math.gcd(dx, dy)
+            dy = dy // gcd
+            dx = dx // gcd
 
             i = 0
             while True:
-                aa = (a[0] + distY * i, a[1] + distX * i)
+                aa = (ay + dy * i, ax + dx * i)
 
                 if aa in indicies:
                     antinodes.add(aa)
@@ -54,7 +56,7 @@ def solve2():
 
             i = 0
             while True:
-                bb = (b[0] - distY * i, b[1] - distX * i)
+                bb = (by - dy * i, bx - dx * i)
 
                 if bb in indicies:
                     antinodes.add(bb)
