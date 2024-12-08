@@ -1,18 +1,18 @@
 import math
 import re
-from itertools import combinations
+from itertools import combinations, product
 
 with open('input.txt') as file:
     input = [[*line] for line in file.read().strip().splitlines()]
 
 size = len(input)
-indicies = range(size)
+indicies = set(product(range(size), repeat=2))
 antennas = {}
 
-for y in indicies:
-    for x, val in enumerate(input[y]):
-        if val != '.':
-            antennas.setdefault(val, []).append((y, x))
+for y, x in indicies:
+    val = input[y][x]
+    if val != '.':
+        antennas.setdefault(val, []).append((y, x))
 
 def solve1():
     antinodes = set()
@@ -25,12 +25,9 @@ def solve1():
             aa = (a[0] + distY, a[1] + distX)
             bb = (b[0] - distY, b[1] - distX)
 
-            aa_in = aa[0] in indicies and aa[1] in indicies
-            bb_in = bb[0] in indicies and bb[1] in indicies
-
-            if aa_in:
+            if aa in indicies:
                 antinodes.add(aa)
-            if bb_in:
+            if bb in indicies:
                 antinodes.add(bb)
 
     return len(antinodes)
@@ -49,18 +46,22 @@ def solve2():
             i = 0
             while True:
                 aa = (a[0] + distY * i, a[1] + distX * i)
+
+                if aa in indicies:
+                    antinodes.add(aa)
+                    i += 1
+                else:
+                    break
+
+            i = 0
+            while True:
                 bb = (b[0] - distY * i, b[1] - distX * i)
 
-                aa_in = aa[0] in indicies and aa[1] in indicies
-                bb_in = bb[0] in indicies and bb[1] in indicies
-
-                if aa_in:
-                    antinodes.add(aa)
-                if bb_in:
+                if bb in indicies:
                     antinodes.add(bb)
-                if not aa_in and not bb_in:
+                    i += 1
+                else:
                     break
-                i += 1
 
     return len(antinodes)
 
