@@ -21,12 +21,16 @@ def solve1():
         for a, b in combinations(coords, 2):
             distY = a[0] - b[0]
             distX = a[1] - b[1]
+
             aa = (a[0] + distY, a[1] + distX)
             bb = (b[0] - distY, b[1] - distX)
 
-            if aa[0] in indicies and aa[1] in indicies:
+            aa_in = aa[0] in indicies and aa[1] in indicies
+            bb_in = bb[0] in indicies and bb[1] in indicies
+
+            if aa_in:
                 antinodes.add(aa)
-            if bb[0] in indicies and bb[1] in indicies:
+            if bb_in:
                 antinodes.add(bb)
 
     return len(antinodes)
@@ -45,20 +49,16 @@ def solve2():
             i = 0
             while True:
                 aa = (a[0] + distY * i, a[1] + distX * i)
-
-                if aa[0] in indicies and aa[1] in indicies:
-                    antinodes.add(aa)
-                else:
-                    break
-                i += 1
-
-            i = 0
-            while True:
                 bb = (b[0] - distY * i, b[1] - distX * i)
 
-                if bb[0] in indicies and bb[1] in indicies:
+                aa_in = aa[0] in indicies and aa[1] in indicies
+                bb_in = bb[0] in indicies and bb[1] in indicies
+
+                if aa_in:
+                    antinodes.add(aa)
+                if bb_in:
                     antinodes.add(bb)
-                else:
+                if not aa_in and not bb_in:
                     break
                 i += 1
 
