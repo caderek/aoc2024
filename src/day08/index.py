@@ -12,9 +12,6 @@ for y, x in indicies:
     if val != '.':
         antennas.setdefault(val, []).append((y, x))
 
-def get_point():
-    return
-
 def solve1():
     antinodes = set()
 
