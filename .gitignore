@@ -7,3 +7,5 @@ node_modules
 .idea
 .vscode
 .env
+*/**/media
+*/**/__pycache__
