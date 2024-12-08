@@ -1,5 +1,4 @@
 import math
-import re
 from itertools import combinations, product
 
 with open('input.txt') as file:
