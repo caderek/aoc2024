@@ -11,19 +11,14 @@ graph = {}
 starts = []
 
 for y, x,  in product(indicies, repeat=2):
-    if input[y][x] == '.':
-        continue
     val = int(input[y][x])
     key = (val, y, x)
     graph[key] = []
     if val == 0:
         starts.append(key)
     for dx, dy in dirs:
-        yy = y + dy
-        xx = x + dx
+        yy, xx = y + dy, x + dx
         if yy in indicies and xx in indicies:
-            if input[yy][xx] == '.':
-                continue
             val2 = int(input[yy][xx])
             if val2 - val == 1:
                 graph[key].append((val2, yy, xx))
