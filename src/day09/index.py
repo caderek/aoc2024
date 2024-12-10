@@ -54,7 +54,6 @@ def solve2(disk):
         front = 0
 
         while front <= back:
-
             item = disk[front]
             if item == '.':
                 to_indicies.append(front)
