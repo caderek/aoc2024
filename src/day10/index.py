@@ -1,4 +1,3 @@
-import re
 from itertools import product
 
 with open('input.txt') as file:
@@ -12,25 +11,24 @@ starts = []
 
 for y, x,  in product(indicies, repeat=2):
     val = int(input[y][x])
-    key = (val, y, x)
-    graph[key] = []
+    node = (y, x)
+    graph[node] = []
     if val == 0:
-        starts.append(key)
+        starts.append(node)
     for dx, dy in dirs:
-        yy, xx = y + dy, x + dx
-        if yy in indicies and xx in indicies:
-            val2 = int(input[yy][xx])
+        y2, x2 = y + dy, x + dx
+        if y2 in indicies and x2 in indicies:
+            val2 = int(input[y2][x2])
             if val2 - val == 1:
-                graph[key].append((val2, yy, xx))
+                graph[node].append((y2, x2))
 
-def get_ends(graph, start, count = 1):
+def get_ends(graph, node, count = 1):
     ends = []
     if count == TRAIL_LEN:
-        ends.append(start)
-    for neighbor in graph[start]:
+        ends.append(node)
+    for neighbor in graph[node]:
         ends.extend(get_ends(graph, neighbor, count + 1))
     return ends
-
 
 part1 = 0
 part2 = 0
