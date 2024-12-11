@@ -5,21 +5,21 @@ with open('input.txt') as file:
 
 nums = [int(x) for x in input.split(' ')]
 
-def solve(max):
+def solve(max_depth):
     @functools.lru_cache(maxsize=None)
-    def recur(n, d = 0):
-        if d == max:
+    def rec(n, depth = 0):
+        if depth == max_depth:
             return 1
-        d = d +1
+        depth += 1
         if n == 0:
-            return recur(1, d)
+            return rec(1, depth)
         s = str(n)
         l = len(s)
         if l % 2 == 0:
-            return recur(int(s[:l//2]), d) + recur(int(s[l//2:]), d)
-        return recur(n * 2024, d)
+            return rec(int(s[:l//2]), depth) + rec(int(s[l//2:]), depth)
+        return rec(n * 2024, depth)
     
-    return sum(recur(x) for x in nums)
+    return sum(rec(n) for n in nums)
 
 part1 = solve(25)
 part2 = solve(75)
