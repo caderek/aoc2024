@@ -1,4 +1,4 @@
-import functools
+from functools import lru_cache
 
 with open('input.txt') as file:
     input = file.read().strip()
@@ -6,7 +6,7 @@ with open('input.txt') as file:
 nums = [int(x) for x in input.split(' ')]
 
 def solve(max_depth):
-    @functools.lru_cache(maxsize=None)
+    @lru_cache(maxsize=None)
     def rec(n, depth = 0):
         if depth == max_depth:
             return 1
