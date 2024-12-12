@@ -45,7 +45,7 @@ def count_vertices(points):
 
     for y, x in points:
         # expand each point into 3x3 grid of points
-        # so we can find all vertices
+        # so we can identify all vertices by counting neighbors
         cell_points = (
             (y * 2, x * 2),
             (y * 2 + 1, x * 2),
