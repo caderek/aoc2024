@@ -39,13 +39,13 @@ def get_safety_factor(robots):
 
 def dist_stdev(nums):
     nums.sort()
-    distances = [a + b for a, b in pairwise(nums)]
+    distances = [abs(a - b) for a, b in pairwise(nums)]
     return stdev(distances)
 
 def get_chaos_score(robots):
     dev_h = dist_stdev([robot[0] for robot in robots])
     dev_v = dist_stdev([robot[1] for robot in robots])
-    return dev_h + dev_v
+    return 1 / (dev_h + dev_v)
 
 def solve1(robots):
     simulate(robots, 100)
@@ -58,6 +58,7 @@ def solve2(robots, max_time):
     for sec in range(1, max_time):
         simulate(robots, 1)
         chaos = get_chaos_score(robots)
+        print(sec, chaos)
         if chaos < min_chaos:
             min_chaos = chaos
             min_chaos_sec = sec
