@@ -42,28 +42,27 @@ def dist_stdev(nums):
     distances = [abs(a - b) for a, b in pairwise(nums)]
     return stdev(distances)
 
-def get_chaos_score(robots):
+def get_order_score(robots):
     dev_h = dist_stdev([robot[0] for robot in robots])
     dev_v = dist_stdev([robot[1] for robot in robots])
-    return 1 / (dev_h + dev_v)
+    return dev_h + dev_v
 
 def solve1(robots):
     simulate(robots, 100)
     return get_safety_factor(robots)
 
 def solve2(robots, max_time):
-    min_chaos = float("inf")
-    min_chaos_sec = 0
+    max_order = 0 
+    max_order_sec = 0
 
     for sec in range(1, max_time):
         simulate(robots, 1)
-        chaos = get_chaos_score(robots)
-        print(sec, chaos)
-        if chaos < min_chaos:
-            min_chaos = chaos
-            min_chaos_sec = sec
+        order_score = get_order_score(robots)
+        if order_score > max_order:
+            max_order = order_score
+            max_order_sec = sec
 
-    return min_chaos_sec
+    return max_order_sec
 
 part1 = solve1(deepcopy(robots))
 part2 = solve2(deepcopy(robots), max_time = w * h) # adjust max_time if needed
