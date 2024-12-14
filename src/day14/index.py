@@ -65,7 +65,7 @@ def solve2(robots, max_time):
     return max_order_sec
 
 part1 = solve1(deepcopy(robots))
-part2 = solve2(deepcopy(robots), max_time = w * h) # adjust max_time if needed
+part2 = solve2(deepcopy(robots), max_time = 10000) # adjust max_time if needed
 
 # confirm visually
 simulate(robots, part2)
