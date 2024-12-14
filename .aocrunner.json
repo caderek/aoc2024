@@ -187,13 +187,13 @@
     },
     {
       "part1": {
-        "solved": false,
-        "result": null,
+        "solved": true,
+        "result": 226236192,
         "attempts": [],
         "time": null
       },
       "part2": {
-        "solved": false,
+        "solved": 8168,
         "result": null,
         "attempts": [],
         "time": null
