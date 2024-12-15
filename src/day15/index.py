@@ -1,4 +1,3 @@
-import sys
 import re
 from itertools import chain
 from copy import deepcopy
