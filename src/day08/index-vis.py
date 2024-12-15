@@ -2,6 +2,10 @@ import math
 from itertools import combinations, product
 from manim import *
 
+config.pixel_height = 1080
+config.pixel_width = 1080
+config.frame_height = 8.0  # This will set the vertical height of the frame
+config.frame_width = 8.0  # This will set the horizontal width of the frame
 
 with open('input.txt') as file:
     input = [[*line] for line in file.read().strip().splitlines()]

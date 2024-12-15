@@ -16,6 +16,16 @@ def draw(robots):
     for line in grid:
         print(''.join(line))
 
+def draw2(robots):
+    grid = [['        ' for x in range(31)] for y in range(33)]
+    for x, y, _, __ in robots:
+        xx = x - 20
+        yy = y - 47
+        if xx in range(31) and yy in range(33):
+            grid[yy][xx] = f"({str(x).ljust(2, '0')},{str(y).ljust(2, '0')}) "
+    for line in grid:
+        print(''.join(line))
+
 def simulate(robots, time):
     for i, robot  in enumerate(robots):
         x, y, vx, vy = robot
@@ -69,7 +79,7 @@ part2 = solve2(deepcopy(robots), max_time = 10000) # adjust max_time if needed
 
 # confirm visually
 simulate(robots, part2)
-draw(robots)
+draw2(robots)
 
 print(part1)
 print(part2)
