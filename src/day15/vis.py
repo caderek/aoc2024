@@ -14,7 +14,7 @@ dirs = {
 def find_start(w):
     for y in range(len(w)):
         for x in range(len(w[0])):
-            if w[y][x] == '@':
+            if expanded[y][x] == '@':
                 return (y, x)
 
 def sum_coords(w, sym):
