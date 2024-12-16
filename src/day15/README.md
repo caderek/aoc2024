@@ -8,11 +8,11 @@ Task description: [link](https://adventofcode.com/2024/day/15)
 
 ### Part 1
 
-![Visualization part 1](https://raw.githubusercontent.com/caderek/aoc2024/refs/heads/main/src/day15/Day15A.webp)
+![Visualization part 1](https://raw.githubusercontent.com/caderek/aoc2024/refs/heads/main/src/day15/vis_1.webp)
 
 ### Part 2
 
-![Visualization part 2](https://raw.githubusercontent.com/caderek/aoc2024/refs/heads/main/src/day15/Day15B.webp)
+![Visualization part 2](https://raw.githubusercontent.com/caderek/aoc2024/refs/heads/main/src/day15/vis_2.webp)
 
 ## Notes
 
